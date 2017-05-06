@@ -1,9 +1,14 @@
-<h1>Candy Shop</h1>
+<h1>Candy Shop - Stock Table</h1>
+<h3>Using this software, you can manage the candy stock for our shop</h3>
 
+<!-- Directs to add a new candy page -->
 <input type="button" value="ADD A NEW CANDY" class="btn btn-default" ng-click=addCandy()>
 
-<table class="candyDisplayTable">
+<!-- Allows the user to enter a search term to sort the table by -->
+<input type="text" ng-model="searchTerm" placeholder="SEACH TABLE">
 
+<!-- The table showing all candy saved in the database -->
+<table class="candyDisplayTable">
     <tr>
         <th>Name</th>
         <th>Description</th>
@@ -11,13 +16,15 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-        
-    <tr ng-repeat="item in allCandy | orderBy:'name'">
+    <tr ng-repeat="item in allCandy | filter : searchTerm">
         <td>{{item.name}}</td>
         <td>{{item.description}}</td>
         <td>{{item.price}}</td>
-        <td><input type="button" value="Edit" class="btn btn-info" ng-click="editCandyDetails(item)"></td>
-        <td><input type="button" value="Delete" class="btn btn-info" ng-click="deleteCandy(item)"></td>
+        <td>
+            <input type="button" value="Edit" class="btn btn-info" ng-click="editCandyDetails(item)">
+        </td>
+        <td>
+            <input type="button" value="Delete" class="btn btn-info" ng-click="deleteCandy(item)">
+        </td>
     </tr>
-    
 </table>

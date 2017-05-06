@@ -27,7 +27,7 @@ var Candy = mongoose.model("Candy",{
 	price:Number,
 });
 
-// ADD a new candy to DB
+// CREATE - POST candy to DB
 app.post("/addCandy",function(request, response){
     var newCandy = new Candy(request.body);
     newCandy.save();
@@ -35,7 +35,7 @@ app.post("/addCandy",function(request, response){
     response.send(newCandy);
 });
 
-// GET all candy from DB
+// READ - GET all candy from DB
 app.get("/seeAllCandy", function(request, response){
    Candy.find({}).exec(function(err,candy){
        if(err){
@@ -43,12 +43,12 @@ app.get("/seeAllCandy", function(request, response){
        }
        else{
            response.send(candy);
-           console.log("All candy displayed");
+           console.log("Candy List loaded from DB and sent to user");
        }
    }) 
 });
 
-// Edit a single Candy
+// UPDATE - PUT (update) a candy in the DB by the id
 app.put("/editCandy/:_id", function(request, response){
     
     var editedCandy = request.body;
@@ -66,13 +66,13 @@ app.put("/editCandy/:_id", function(request, response){
                 response.send(singleCandy);
             }
             else{
-                console.log("There was an issue" + " " + err.status);
+                console.log("There was an issue editing the candy. The error was: " + " " + err.status);
             }      
         }
     })
 });
 
-// Remove a single candy
+// DELETE - delete specific candy from the DB
 app.delete("/deleteCandy/:_id",function(request,response){
     Candy.remove({_id:request.params._id}).exec(function(err,deletedCandy){
         if(err){
@@ -80,11 +80,10 @@ app.delete("/deleteCandy/:_id",function(request,response){
         }
         else{
             response.status(204);
-            response.send("Candy Removed");
+            response.send("Candy removed from the DB");
         }
     })
 });
-
 
 // allows the server to connect on port 3000 
 app.listen(3000,function(){
