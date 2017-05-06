@@ -1,0 +1,14 @@
+.candyDisplayTable, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+th {
+    background-color: magenta;
+    color: white;
+}
+
+td {
+    background-color: #d35400;
+    color: white;
+}

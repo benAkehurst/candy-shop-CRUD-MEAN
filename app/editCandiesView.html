@@ -1,0 +1,14 @@
+<h1>Edit Candy</h1>
+
+<form class="editCandy">
+    <label for="candyName">Candy Name:</label>
+    <input id="candyName" type='text' required ng-model="candyName">
+    <br />
+    <label for="candyDescription">Candy Description:</label>
+    <input id="candyDescription" type='text' required ng-model="candyDescription">
+    <br />
+    <label for="candyPrice">Candy Price:</label>
+    <input id="candyPrice" type='number' required ng-model="candyPrice">
+    <br />
+    <input type="button" value="Update" class="btn btn-info" ng-click="editCandy()">
+</form>

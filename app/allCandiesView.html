@@ -1,0 +1,23 @@
+<h1>Candy Shop</h1>
+
+<input type="button" value="ADD A NEW CANDY" class="btn btn-default" ng-click=addCandy()>
+
+<table class="candyDisplayTable">
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+        
+    <tr ng-repeat="item in allCandy | orderBy:'name'">
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price}}</td>
+        <td><input type="button" value="Edit" class="btn btn-info" ng-click="editCandyDetails(item)"></td>
+        <td><input type="button" value="Delete" class="btn btn-info" ng-click="deleteCandy(item)"></td>
+    </tr>
+    
+</table>
