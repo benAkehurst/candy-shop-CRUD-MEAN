@@ -8,7 +8,7 @@
 
         $scope.editCandy = function(item) {
 
-            var id = $rootScope.candyId;
+            var id = item._id;
 
             var editCandyObj = {
                 "name": $scope.candyName,

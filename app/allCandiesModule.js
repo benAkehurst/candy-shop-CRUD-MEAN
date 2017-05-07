@@ -21,7 +21,7 @@
         // Route to candy edit
         $scope.editCandyDetails = function(item) {
             var id = item._id;
-            $rootScope.candyId = item._id;
+            $rootScope.candyId = id;
             $location.path("/editCandy/" + id);
         }
 
